@@ -1329,19 +1329,19 @@ function organizer_date_time($slot, $nobreak = false) {
     // If slot is within a day.
     if (organizer_userdate($slot->starttime, get_string('datetemplate', 'organizer')) ==
         organizer_userdate($slot->starttime + $slot->duration, get_string('datetemplate', 'organizer'))) {
-        $datefrom = html_writer::span(organizer_userdate($slot->starttime, '%a'), 'badge badge-info font-big mr-1');
+        $datefrom = html_writer::span(organizer_userdate($slot->starttime, '%A'), 'badge badge-info font-big mr-1');
         $datefrom .= organizer_userdate($slot->starttime, get_string('datetemplate', 'organizer')) . " " .
             html_writer::span(organizer_userdate($slot->starttime, get_string('timetemplate', 'organizer')),
                 'badge badge-dark font-big mr-1');
         $dateto = html_writer::span(organizer_userdate($slot->starttime + $slot->duration,
             get_string('timetemplate', 'organizer')), 'badge badge-dark font-big ml-1');
     } else {
-        $datefrom = html_writer::span(organizer_userdate($slot->starttime, '%a'), 'badge badge-info font-big mr-1');
+        $datefrom = html_writer::span(organizer_userdate($slot->starttime, '%A'), 'badge badge-info font-big mr-1');
         $datefrom .= organizer_userdate($slot->starttime, get_string('datetemplate', 'organizer')) . " " .
             html_writer::span(organizer_userdate($slot->starttime, get_string('timetemplate', 'organizer')),
                 'badge badge-dark font-big mr-1');
         $slotendtime = $slot->starttime + $slot->duration;
-        $dateto = html_writer::span(organizer_userdate($slotendtime, '%a'), 'badge badge-info font-big mr-1');
+        $dateto = html_writer::span(organizer_userdate($slotendtime, '%A'), 'badge badge-info font-big mr-1');
         $dateto .= organizer_userdate($slotendtime, get_string('datetemplate', 'organizer')) .
             html_writer::span(organizer_userdate($slotendtime, get_string('timetemplate', 'organizer')),
                 'badge badge-dark font-big ml-1');
