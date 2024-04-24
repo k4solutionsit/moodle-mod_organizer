@@ -1429,6 +1429,7 @@ function organizer_fetch_table_entries($slots, $orderby="") {
     s.gap,
     s.location,
     s.comments AS teachercomments,
+    u.id,
     u.firstname,
     u.lastname,
 	u.email,
@@ -1734,6 +1735,7 @@ function organizer_printslotuserfields($nochoiceoption=false) {
 
     require_once($CFG->dirroot . '/user/profile/lib.php');
 
+    $profilefields['id'] = organizer_filter_text(get_string('id', 'organizer'));
     $profilefields['lastname'] = organizer_filter_text(get_string('lastname'));
     $profilefields['firstname'] = organizer_filter_text(get_string('firstname'));
     $profilefields['email'] = organizer_filter_text(get_string('email'));
@@ -1782,6 +1784,7 @@ function organizer_get_allowed_printslotuserfields() {
         }
     } else {
         $selectedprofilefields[''] = '--';
+        $selectedprofilefields['id'] = get_string('id', 'organizer');
         $selectedprofilefields['lastname'] = get_string('lastname');
         $selectedprofilefields['firstname'] = get_string('firstname');
         $selectedprofilefields['email'] = get_string('email');

@@ -156,6 +156,11 @@ function organizer_display_printable_slotdetail_table($columns, $slotid, $entrie
                 $columnwitdh[] = array('value' => 24, 'mode' => 'Relativ');
                 $columnformats[] = array('fill' => 0, 'align' => 'C');
             break;
+            case 'id':
+                $titles[] = organizer_filter_text(get_string('id', 'organizer'));
+                $columnwitdh[] = array('value' => 24, 'mode' => 'Relativ');
+                $columnformats[] = array('fill' => 0, 'align' => 'C');
+            break;
             case 'attended':
                 $titles[] = organizer_filter_text(get_string('attended', 'organizer'));
                 $columnwitdh[] = array('value' => 12, 'mode' => 'Relativ');

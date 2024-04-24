@@ -284,6 +284,12 @@ function organizer_display_printable_table($registrationsfromdate, $timedue, $co
     $mpdftable->setTitles($titles);
     $mpdftable->setColumnFormat($columnformats);
     $entries = organizer_fetch_table_entries($slots, $dosort);
+
+
+    // print_r($entries);
+    // die();
+
+
     $rowspan = 0;
     foreach ($entries as $entry) {
         $row = array();
@@ -320,10 +326,10 @@ function organizer_display_printable_table($registrationsfromdate, $timedue, $co
                         foreach ($trainers as $trainer) {
                             $a->firstname = $trainer->firstname;
                             $a->lastname = $trainer->lastname;
-                            $name .= $conn . get_string('fullname_template', 'organizer', $a);
+                            $name .= $conn . get_string('id', 'organizer', $a);
                             $conn = ", ";
                         }
-                        $row[] = array('data' => $name, 'rowspan' => $rowspan - 1, 'name' => 'teacher');
+                        $row[] = array('data' => $entry->id, 'rowspan' => $rowspan - 1, 'name' => 'teacher');
                     }
                 break;
                 case 'teachercomments':
@@ -358,6 +364,9 @@ function organizer_display_printable_table($registrationsfromdate, $timedue, $co
                 break;
                 case 'email':
                     $row[] = array('data' => $entry->email, 'rowspan' => 0, 'name' => 'email');
+                break;
+                case 'id':
+                    $row[] = array('data' => $entry->id, 'rowspan' => 0, 'name' => 'email');
                 break;
                 case 'idnumber':
                     $idnumber = (isset($entry->idnumber) && $entry->idnumber !== '') ? $entry->idnumber : '';

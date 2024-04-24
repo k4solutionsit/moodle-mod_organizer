@@ -373,7 +373,13 @@ class organizer_print_slots_form extends moodleform {
                         $cell->attributes['class'] = 'align-middle p-2';
                         $row->cells[] = $cell;
                     break;
-                    case 'idnumber':
+                    case 'id':
+                        $id = (isset($entry->id) && $entry->id !== '') ? $entry->id : '';
+                        $content = "<span name='{$column}_cell'>" . $id . '</span>';
+                        $cell = new html_table_cell($content);
+                        $cell->attributes['class'] = 'align-middle p-2';
+                        $row->cells[] = $cell;
+                    break;                    case 'idnumber':
                         $idnumber = (isset($entry->idnumber) && $entry->idnumber !== '') ? $entry->idnumber : '';
                         $content = "<span name='{$column}_cell'>" . $idnumber . '</span>';
                         $cell = new html_table_cell($content);
