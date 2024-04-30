@@ -1329,9 +1329,11 @@ function organizer_date_time($slot, $nobreak = false) {
     // If slot is within a day.
     if (organizer_userdate($slot->starttime, get_string('datetemplate', 'organizer')) ==
         organizer_userdate($slot->starttime + $slot->duration, get_string('datetemplate', 'organizer'))) {
-        $datefrom = html_writer::span(organizer_userdate($slot->starttime, '%A'), 'badge badge-info font-big mr-1');
-        $datefrom .= organizer_userdate($slot->starttime, get_string('datetemplate', 'organizer')) . " " .
-            html_writer::span(organizer_userdate($slot->starttime, get_string('timetemplate', 'organizer')),
+        $datefrom  = '';
+       $datefrom .= '<h6 class="p-2">- '.k4organizer_userdate($slot->starttime, get_string('strftimedate')) . " -</h6>";
+
+        $datefrom .= html_writer::span(organizer_userdate($slot->starttime, '%A'), 'badge badge-info font-big mr-1');
+         $datefrom .= html_writer::span(organizer_userdate($slot->starttime, get_string('timetemplate', 'organizer')),
                 'badge badge-dark font-big mr-1');
         $dateto = html_writer::span(organizer_userdate($slot->starttime + $slot->duration,
             get_string('timetemplate', 'organizer')), 'badge badge-dark font-big ml-1');
@@ -1357,6 +1359,9 @@ function organizer_date_time($slot, $nobreak = false) {
 }
 
 function organizer_userdate($date, $format) {
+    return userdate($date, $format, null, false, false);
+}
+function k4organizer_userdate($date, $format) {
     return userdate($date, $format, null, false, false);
 }
 
